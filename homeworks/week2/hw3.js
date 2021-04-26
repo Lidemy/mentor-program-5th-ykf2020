@@ -9,5 +9,4 @@ function reverse(str) {
   }
   console.log(strreverse.join(''))
 }
-
 reverse('hello');

@@ -1,3 +1,4 @@
+
 function capitalize(str){
   var strsplit = str.split('')
 

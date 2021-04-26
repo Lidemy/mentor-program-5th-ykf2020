@@ -17,6 +17,5 @@ function repeat(str, times) {
 }
 
 console.log(repeat('a', 5));
-
 console.log(join(['a'], '!'));
 console.log(repeat('a', 5));
