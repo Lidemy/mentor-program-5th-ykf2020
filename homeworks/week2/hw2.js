@@ -7,5 +7,4 @@ function capitalize(str){
   }
   return(strsplit.join(""))
 }
-
 console.log(capitalize('hello'));
