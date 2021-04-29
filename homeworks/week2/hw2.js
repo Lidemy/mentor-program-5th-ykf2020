@@ -1,5 +1,6 @@
 /* eslint-disable */
 function capitalize(str){
+  
   var strsplit = str.split('')
 
   if(strsplit[0]>="a" && strsplit[0] <= "z" ){
