@@ -1,12 +1,15 @@
 /* eslint-disable */
 function join(arr, concatStr) {
-
-  var str = arr[0];
-  for(var i=1; i<arr.length ;i++){
-    str = str + concatStr + arr[i]
+  if (arr.length === 0) {
+    return '' } else {
+    var str = arr[0];
+    for(var i=1; i<arr.length ;i++){
+      str = str + concatStr + arr[i]
+    }
+    return str
   }
-  return str
 }
+// 若為空陣列，回傳無內容的字串
 
 function repeat(str, times) {
 
@@ -18,7 +21,6 @@ function repeat(str, times) {
 }
 
 console.log(join([1, 2, 3], ''))
-console.log(join(["a", "b", "c"], "!"))
-console.log(join(["a", 1, "b", 2, "c", 3], ','))
 console.log(repeat('a', 5));
-console.log(repeat('yoyo', 2))
+
+//留下兩個 condole.log 作為代表性的答案，刪除其他的
