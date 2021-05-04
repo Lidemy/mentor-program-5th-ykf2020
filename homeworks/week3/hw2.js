@@ -20,10 +20,10 @@ function solve(lines) {
   const m = Number(arr[1])
 
   for (let i = n; i <= m; i++) {
-    const j = i.toString()
+    const digit = i.toString()
     let sum = 0
-    for (let k = 0; k < j.length; k++) {
-      sum = sum + (Math.pow(Number(j[k]), Number(i.toString().length)))
+    for (let k = 0; k < digit.length; k++) {
+      sum = sum + (Math.pow(Number(digit[k]), i.toString().length))
     }
     if (sum === i) {
       console.log(sum)

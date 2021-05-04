@@ -14,16 +14,10 @@ rl.on('close', () => {
 })
 
 function solve(lines) {
-  const arr = lines[0].split('')
-  const reverse = []
-  for (let i = arr.length - 1; i >= 0; i--) {
-    reverse.push(arr[i])
+  const str = lines[0]
+  let reverse = ''
+  for (let i = str.length - 1; i >= 0; i--) {
+    reverse = reverse + str[i]
   }
-  let flag = 'True'
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== reverse[i]) {
-      flag = 'False'
-    }
-  }
-  console.log(flag)
+  console.log(reverse === str ? 'True' : 'False')
 }
