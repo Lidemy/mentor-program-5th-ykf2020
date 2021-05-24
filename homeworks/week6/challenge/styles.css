@@ -1,0 +1,262 @@
+* {
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+
+body {
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  font-family: Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  width:100vw;
+}
+
+.nav {
+  display: flex;
+  width:100%;
+  height:42px;
+  background:#ff6600;
+}
+
+.nav .icon {
+  display: flex;
+  align-items: center;
+}
+.nav .icon img {
+  border: solid 1px white;
+  margin-left: 2px;
+  margin-right: 8px;
+}
+
+.nav .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav .text header h1 {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight:900 ;
+}
+
+.nav .text .nav__options a {
+  font-size: 12px;
+  text-decoration: none;
+  color:black;
+}
+
+.nav .text header {
+  margin-top: 3px;
+  margin-bottom: -3px;
+}
+
+.nav .text .nav__options {
+  margin-top: -3px;
+  margin-bottom: 3px;
+}
+
+.nav .text .nav__options span {
+  font-size: 11px;
+  font-weight: normal;
+}
+
+
+.nav .login {
+  font-size: 12px;
+  align-self: center;
+  margin-left: auto;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  height:100%;
+  background:#f6f6ef;
+}
+
+.news {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 12px;
+}
+
+.news + .news {
+  margin-top: 8px;
+}
+
+.news_index {
+  display: flex;
+  justify-content:flex-start;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.news .news_index h3 {
+  font-weight: normal;
+  font-size: 14.667px;
+  color:#828282;
+}
+
+.news .news_index .voter_arrow {
+  width: 13px;
+  height:13px;
+  background: url(https://news.ycombinator.com/grayarrow.gif) no-repeat;
+  background-size: cover;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.news_major {
+  display: flex;
+  flex-direction: column;
+}
+
+.news_major .news_title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.news_major .news__header {
+  font-size: 15px;
+  font-weight: 400;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.news_major .news__from {
+  color:#828282;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.news_major .news__from:hover {
+  text-decoration:underline;
+}
+
+.news_major .news__vote .news__vote-dsc {
+  color:#828282;
+  font-size: 12px;
+}
+
+.news__vote-dsc span {
+  cursor: pointer;
+}
+
+.news__vote-dsc span:hover {
+  text-decoration: underline;
+}
+
+.more {
+  font-size: 14.667px;
+  margin-left: 51.964px;
+  margin-top: 20px;
+  margin-bottom: 14px;
+  cursor: pointer;
+}
+
+.footer {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  background:#f6f6ef;
+  margin-bottom: 14px;
+  padding-top: 10px;
+  border-top: 2px solid #ff6600;
+}
+
+.footer__options a {
+  font-size:12px;
+  text-decoration: none;
+  color:black;
+}
+
+
+.search {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search h3 {
+  font-weight: normal;
+  font-size: 14px;
+  color: #828282;
+}
+
+.search form input {
+  width: 85vw;
+  height:20px;
+}
+
+.news__index-after-10 {
+  margin-left: 0;
+}
+
+@media (min-width:750px) {
+  .container {
+    margin-top:8px;
+    width:92%;
+  }
+  .nav {
+    height:24px;
+  }
+  .nav .icon {
+    cursor: pointer;
+    margin-top: 1px;
+    margin-bottom: 1px;
+  }
+  .nav .text {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav .text header {
+    margin:0
+  }
+
+  .nav .text .nav__options {
+    margin:0 0 0 10px;
+    font-size: 13.333px;
+  }
+
+
+  .news_major .news__header {
+    font-size: 13.333px;
+    font-weight: 400;
+    margin-right: 6px;
+  }
+
+  .news_major .news__from {
+    color:#828282;
+    font-size: 12px;
+  }
+
+  .news_major .news__vote .news__vote-dsc {
+    color:#828282;
+    font-size: 12px;
+  }
+
+  .search {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .search form input {
+    width: 140px;
+    height:15px;
+    margin-left: 4px;
+  }
+}
