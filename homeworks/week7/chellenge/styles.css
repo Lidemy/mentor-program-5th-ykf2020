@@ -1,0 +1,174 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body {
+  height:100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(160deg,#0093E9,#80D0C7);
+}
+
+.item-container {
+  width:800px;
+  min-height:500px;
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  position:relative;
+  z-index: 5;
+}
+
+.photos {
+  width:400%;
+  height:500px;
+  display:flex;
+}
+
+.photo {
+  height:100%;
+  width:25%;
+  transition: 1s ease;
+}
+
+.photo img {
+  width:800px;
+  height:500px;
+  object-fit: cover;
+  position:relative;
+  z-index: 1;
+}
+
+
+.info {
+  position: absolute;
+  color:#222;
+  background: rgba(255,255,255,.7);
+  top:60%;
+  width:600px;
+  height:30%;
+  padding:20px;
+  margin: 0px 100px;
+  border-radius: 5px;
+  box-shadow: 0 20px 30px rgb(1 1 1 / 20%);
+  z-index: 4;
+}
+
+.info h3 {
+  font-size:1.5em;
+  font-weight:bold;
+}
+
+.info p {
+  font-size:1em;
+  font-weight:normal;
+}
+
+
+.buttons{
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:100%;
+  min-height:500px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+}
+
+.item-container:hover .buttons{
+  opacity:1;
+}
+
+.fas {
+  color:#222;
+  font-size: 2em;
+  padding: 10px;
+  background: rgba(255,255,255,.6);
+  cursor:pointer;
+}
+
+.fa-chevron-left {
+  border-top-right-radius:5px ;
+  border-bottom-right-radius:5px ;
+}
+
+.fa-chevron-right {
+  border-top-left-radius:5px ;
+  border-bottom-left-radius:5px ;
+}
+
+.navigation-buttons {
+  position:absolute;
+  bottom:3%;
+  left:50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+}
+
+.slide-button {
+  background: rgba(255,255,255,.6);
+  width:25px;
+  height:15px;
+  margin: 0 5px;
+  border-radius: 2px;
+  box-shadow: 0 5px 25px rgb(1 1 1/ 20%);
+}
+
+.slide-button:hover {
+  cursor:pointer;
+}
+
+.fill {
+  background:#80D0C7;
+}
+
+.first_push {
+  margin-left:0%;
+}
+
+@media(max-width:800px){
+  .item-container{
+    width:100%;
+    height:100%;
+  }
+
+  .photos {
+    width:400%;
+    height:100%;
+    display:flex;
+  }
+
+  .photo {
+    height:100%;
+    width:25%;
+    transition: 1s ease;
+  }
+
+  .photo img {
+    width:100vw;
+    height:100%;
+    object-fit: cover;
+    position:relative;
+    z-index: 1;
+  }
+
+  .info {
+    width: 100vw;
+    height: 20%;
+    top:70%;
+    margin:auto;
+  }
+
+  .buttons {
+    top:20%;
+    opacity:1;
+  }
+}
