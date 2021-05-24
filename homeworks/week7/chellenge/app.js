@@ -1,5 +1,4 @@
-/* eslint-disable camelcase */
-/* eslint-disable prefer-template */
+/* eslint-disable camelcase, prefer-template */
 // 選取左右按鈕
 const left = document.querySelector('.fa-chevron-left')
 const right = document.querySelector('.fa-chevron-right')
