@@ -1,4 +1,4 @@
-/* eslint-disable camelcase, prefer-template */
+/* eslint-disable camelcase, prefer-template, prefer-destructuring */
 // 選取 input 輸入的值
 const todo_input = document.querySelector('.todo-input')
 // 選取新增按鈕
@@ -16,7 +16,7 @@ function addTodo(e) {
   // 避免表單送出
   e.preventDefault()
   // 取得 input 中的值
-  const value = [todo_input]
+  const value = todo_input.value
   // 設定新的 todo
   const todo = document.createElement('div')
   todo.classList.add('todo')
