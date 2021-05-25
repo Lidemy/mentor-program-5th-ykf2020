@@ -17,6 +17,10 @@ function addTodo(e) {
   e.preventDefault()
   // 取得 input 中的值
   const value = todo_input.value
+
+  // 如果空 input 直接 return
+  if (!value) return
+
   // 設定新的 todo
   const todo = document.createElement('div')
   todo.classList.add('todo')
