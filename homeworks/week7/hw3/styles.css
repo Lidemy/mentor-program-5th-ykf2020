@@ -1,0 +1,150 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(-135deg,#8BC6EC,#9599E2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  color:white;
+  margin: 10px;
+  min-height: 10vh;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 15vh;
+}
+
+form input {
+  width:250px;
+  outline: none;
+  padding: 0.5rem;
+  border: none;
+  font-size: 1.5rem;
+}
+
+form button {
+  font-size: 1.5rem;
+  color: #8BC6EC;
+  background: white;
+  padding: 0.5rem;
+  border: none;
+  margin-left: -7px;
+  cursor:pointer;
+  transition: 0.3s ease;
+}
+
+form button:hover {
+  background: #8BC6EC;
+  color:white
+}
+
+form .select select {
+  -webkit-appearance: none;
+  -miz-appearance:none;
+  appearance:none;
+  outline: none;
+  border: none;
+  color:#8BC6EC;
+  width:10rem;
+  cursor:pointer;
+  padding: 0.9rem;
+}
+
+.select {
+  margin-left: 1.6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.select::after {
+  content:"\25BC";
+  font-size: 0.5rem;
+  position: absolute;
+  background:#8BC6EC;
+  color:white;
+  top:0;
+  right:0;
+  padding: 1rem;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.select:hover::after {
+  background: white;
+  color:#8BC6EC;
+}
+
+.todo-container {
+  displat:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todos {
+  min-width:30%;
+  list-style: none;
+}
+
+.todo {
+  margin: 0.5rem;
+  background: white;
+  color:#222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s ease;
+}
+
+.todo li {
+  min-width: 28vw;
+  padding:0 0.7rem;
+  flex:1
+}
+
+.delete_btn, .complete_btn {
+  background: #8BC6EC;
+  color:white;
+  border:none;
+  padding:1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.5s ease;
+}
+
+.delete_btn:hover , .complete_btn:hover {
+  background:#9599E2;
+}
+
+.fas {
+  pointer-events:none;
+}
+
+.completed {
+  text-decoration:line-through;
+  opacity: 0.7;
+}
+
+.gone {
+  transform: translateX(30%);
+  opacity: 0;
+}
+
+@media(max-width:768px) {
+  .todo li {
+    min-width: 70vw;
+  }
+
+}
