@@ -20,9 +20,7 @@ function addTodo(e) {
   // 設定新的 todo
   const todo = document.createElement('div')
   todo.classList.add('todo')
-
-  const todo_content = document.createElement('li')
-  todo_content.innerText = value
+  todo.innerHTML = `<li onmouseover="this.title='${value}'">${value}</li>`
 
   const complete_button = document.createElement('button')
   complete_button.innerHTML = '<i class="fas fa-check"></i>'
@@ -32,7 +30,6 @@ function addTodo(e) {
   delete_button.innerHTML = '<i class="fas fa-trash">'
   delete_button.classList.add('delete_btn')
 
-  todo.appendChild(todo_content)
   todo.appendChild(complete_button)
   todo.appendChild(delete_button)
 
