@@ -29,7 +29,7 @@ API 會按照機率回傳不同的獎項名稱，請你針對不同的獎項名�
 
 獎項名稱一共有四種：FIRST、SECOND、THIRD 以及 NONE。
 
-1. FIRST，頭獎，在網頁上顯示字樣：「恭喜你中頭獎了！日本東京來回雙人遊！」，並且把背景改成[這張圖片](https://pixabay.com/photos/flight-plane-close-look-airplane-4315953/)。
+1. FIRST，頭獎，在網頁上顯示字樣：「恭喜你中頭獎了！日本東京來回雙人遊！」，並且把背景改成[這張圖片](
 2. SECOND，二獎，在網頁上顯示字樣：「二獎！90 吋電視一台！」，並且把背景換成[這張圖片](https://pixabay.com/photos/living-room-tv-table-a-drawer-home-1872192/)。
 3. THIRD，三獎，在網頁上顯示字樣：「恭喜你抽中三獎：知名 YouTuber 簽名握手會入場券一張，bang！」，並且在網頁上放[這張圖片](https://pixabay.com/photos/youtube-iphone-smartphone-mobile-2617510/)。
 4. NONE，銘謝惠顧，在網頁上顯示字樣：「銘謝惠顧」，並且把圖片的部分變成黑底，文字顏色變成白色。
@@ -62,13 +62,11 @@ API 會按照機率回傳不同的獎項名稱，請你針對不同的獎項名�
 
 <details>
   <summary>提示 #1</summary>
-
   [Twitch API](https://dev.twitch.tv/docs/v5/) 裡面有一個 API 可以拿到 Live Streams 的資料，API 的描述是「Gets a list of live streams.」，看到這行就代表你找對 API 了。
 </details>
 
 <details>
   <summary>提示 #2</summary>
-
   API 要帶的參數有一個 `game` 的欄位，請帶遊戲名稱，還有要記得帶 limit 這個參數
 </details>
 
