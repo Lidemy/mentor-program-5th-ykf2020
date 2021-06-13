@@ -1,0 +1,238 @@
+body {
+  margin: 0;
+  background: linear-gradient(to right top,#65dfc9,#6cdbeb);
+  font-family: 'Baloo 2', 'Noto Sans TC', sans-serif;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.warning {
+  margin-top: 10px;
+  color: #ff595e;
+  padding: 10px;
+  text-align: center;
+}
+
+.board {
+  width:100%;
+  max-width:700px;
+  margin: 20px auto;
+  padding: 10px 30px;
+  background: linear-gradient(to right bottom,rgba(255, 255, 255,0.7),rgba(255, 255, 255, 0.3));
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+}
+
+.board h1{
+  text-align: center;
+  color:#426696;
+}
+
+.board h2 {
+  margin:0 auto 10px;
+  text-align: center;
+  color:#426696;
+}
+
+.board h3{
+  text-align: center;
+}
+
+.circle1,.circle2,.circle3 {
+  background:white;
+  background: linear-gradient(to right bottom,rgba(255,255,255,0.8),rgba(255,255,255,0.3));
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  position: fixed;
+  z-index: -1;
+
+}
+.circle1{
+  top:-5%;
+  right: 15%;
+}
+
+.circle2{
+  bottom:20%;
+  left: 10%;
+}
+
+.circle3{
+  bottom:-3%;
+  right: 18%;
+}
+
+.board__btn {
+  padding: 5px 5px;
+  border: none;
+  border-radius: 5px;
+  color: #658ec6;
+  font-size:16px;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s all ease;
+
+}
+
+.btn-register:hover:after {
+  content:" Register";
+  color:white;
+}
+
+.btn-register:hover{
+  border-radius: 40px;
+  padding: 5px 15px;
+  background:linear-gradient(to right top, #65dfc9,#6cdbeb);
+  color:white;
+}
+
+.btn-login:hover:after {
+  content:" Log In";
+  color:white;
+}
+
+.btn-login:hover{
+  border-radius: 40px;
+  padding: 5px 15px;
+  background:linear-gradient(to right top, #65dfc9,#6cdbeb);
+  color:white;
+}
+
+.btn-logout:hover:after {
+  content:" Log Out";
+  color:white;
+}
+
+.btn-logout:hover{
+  border-radius: 40px;
+  padding: 5px 15px;
+  background:linear-gradient(to right top, #65dfc9,#6cdbeb);
+  color:white;
+}
+
+.btn-home:hover:after {
+  content:" Home";
+  color:white;
+}
+
+.btn-home:hover{
+  border-radius: 40px;
+  padding: 5px 15px;
+  background:linear-gradient(to right top, #65dfc9,#6cdbeb);
+  color:white;
+}
+
+
+
+
+.board__new-comment-form textarea {
+  width:100%;
+  padding: 10px;
+  border: none;
+  outline: 0;
+  background:linear-gradient(to right bottom,rgba(255,255,255,0.7),rgba(255,255,255,0.3));
+  border-radius: 20px;
+}
+
+.board_nickname-form {
+  margin-top:20px;
+}
+
+.board__nickname {
+  margin-bottom: 10px;
+}
+
+.board__nickname input {
+  padding: 10px;
+  border: none;
+  outline: 0;
+  background:linear-gradient(to right bottom,rgba(255,255,255,0.7),rgba(255,255,255,0.3));
+  border-radius: 20px;
+}
+
+.board__submit-btn {
+  padding:5px 0;
+  border:none;
+  border-radius: 15px;
+  color:white;
+  width:100px;
+  font-family: 'Baloo 2';
+  font-size:16px;
+  font-weight: 600;
+  background:linear-gradient(to right top, #65dfc9,#6cdbeb);
+  position: relative;
+  left:50%;
+  transform: translate(-50%);
+  margin-bottom: 10px;
+}
+
+.board__submit-btn:hover {
+  cursor:pointer;
+  color:#426696;
+  background:linear-gradient(to right bottom,rgba(255,255,255,0.5),rgba(255,255,255,0.3));
+  box-shadow: 5px 5px 5px rgba(66,102,150,0.3);
+}
+
+.board__hr {
+  margin: 10px auto 36px;
+  height: 2px;
+  background: rgba(255,255,255,0.8);
+  max-width: 95%;
+}
+
+.card {
+  position: relative;
+  margin: 20px 0;
+  min-height: 70px;
+  background:linear-gradient(to right bottom,rgba(255,255,255,0.7),rgba(255,255,255,0.3));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.card__avatar {
+  margin-left: 8px;
+  min-width: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #e4f0fb;
+}
+
+.card__body {
+  margin-left: 10px;
+}
+
+.card__author {
+  color: #5c9edc;
+  font-weight: bold;
+  margin-right: 5px;
+}
+.card__info {
+  padding-top: 8px;
+}
+.card__time {
+  color: #a0a0a0;
+}
+
+.card__content {
+  white-space: pre-line;
+  word-break: break-all;
+  padding-right: 12px;
+  margin-top: 6px;
+  max-width: 100%;
+  line-height: 22px;
+}
+
+.hello {
+  color:#658ec6;
+}
+
+.warningmsg {
+  margin:0 auto 20px;
+  color: #ff595e;
+}
