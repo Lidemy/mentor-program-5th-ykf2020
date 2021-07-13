@@ -1,0 +1,331 @@
+* {
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+
+.navbar {
+  box-shadow: 0 0 30px rgb(100,10,100);
+  position: relative;
+  z-index: 5;
+}
+
+.navbar .wrapper{
+  display : flex;
+  justify-content :space-between;
+  align-items :center;
+  height : 84px;
+  background : white;
+  padding : 0px 24px;
+}
+
+.wrapper {
+  max-width:1280px;
+  margin: 0 auto;
+  padding:0px 12px;
+}
+
+.navbar__site-name {
+  color : #6441a5;
+  font-weight: bold;
+  font-size : 36px;
+  line-height: 36px;
+}
+
+.navbar__site-name:hover{
+  cursor: pointer;
+}
+.navbar__list {
+  list-style:none;
+  margin : 0;
+  padding : 0;
+  display : flex;
+  flex-direction : row;
+  font-size : 16px;
+}
+.navbar__list li {
+  margin-left : 6px;
+  border-radius : 8px;
+  transition: 0.2s;
+  margin: auto;
+  text-align: center;
+}
+
+.navbar__list li.active,
+.navbar__list li:hover {
+  background : #815fc0;
+  color : white;
+}
+
+.navbar__list li a {
+  display: block;
+  padding : 12px 24px;
+  border-radius : 8px;
+  text-decoration : none;
+  color : black;
+}
+
+.navbar__list li.active a,
+.navbar__list li:hover a {
+  color : white
+}
+
+
+.main__container {
+  z-index: 0;
+  position: relative;
+  align-items: center;
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  min-height:684px;
+  background: url('./cyberpunk.jpg') center/cover no-repeat;
+}
+
+.main__container::after {
+  content: "";
+  background: rgba(0, 0, 0, 0.65);
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  position:absolute;
+  z-index: -1;
+}
+
+.slogan__landing h2 {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 60px;
+  line-height: 80px;
+  position: absolute;
+  top:30%;
+  left:50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color:white;
+}
+
+.slogan__streaming {
+  margin: 30px auto 10px;
+  text-align: center;
+}
+
+.slogan__streaming h3 {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 30px;
+  color:white;
+  margin-bottom: 5px;
+}
+
+.slogan__streaming p {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 20px;
+  color:white;
+}
+
+.main__container a {
+  text-decoration: none;
+}
+
+.streams__container {
+  max-width:960px;
+  display:inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 30px;
+  padding-right: 15px;
+}
+
+.stream {
+  margin-top: 30px;
+  margin-left: 15px;
+  width:300px;
+  height:250px;
+  background: #815fc0;
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s ease;
+}
+
+
+.stream-empty {
+  width:300px;
+  margin-left: 15px;
+}
+
+.stream:hover {
+  cursor: pointer;
+  box-shadow: 0 0 25px white;
+  transform: scale(1.03)
+}
+
+.stream__preview {
+  width:300px;
+  height:168.75px;
+  background: white;
+}
+
+.stream__preview img {
+  width:100%;
+}
+
+.stream__player {
+  width:100%;
+  height:81.25px;
+  display:flex;
+  justify-content: flex-start;
+  box-sizing:border-box;
+}
+
+.stream__player__info {
+  box-sizing: border-box;
+  width:213px;
+  height:81.25px;
+  padding: 5px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stream__player__avatar {
+  height:81.25px;
+  width:81.25px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.stream__player__avatar img {
+  border-radius: 50%;
+  height:100%;
+}
+
+.stream__player__info__bottom {
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top:4px;
+  padding-bottom: 2px;
+}
+
+.stream__player__info h3 {
+  color:white;
+  font-weight: normal;
+  font-family:sans-serif;
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-height: 22px;        /* fallback */
+  max-height: 44px;       /* fallback */
+}
+
+.stream__player__info p {
+  color: white;
+  font-weight:bold;
+  font-family: sans-serif;
+  font-size:14px;
+}
+
+.more {
+  box-sizing: border-box;
+  height:200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  background: linear-gradient(to bottom, transparent , rgba(10,10,10,0.5));
+  transition: 0.5s ease;
+}
+
+.more h3 {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 30px;
+  color:white;
+}
+
+.more i {
+  color:white;
+  font-size: 50px;
+  transition: 0.5s ease;
+}
+
+.more:hover{
+  cursor: pointer;
+  background: linear-gradient(to bottom, transparent , rgba(10,10,10,0.7))
+}
+
+
+.more:hover i{
+  transform: translateY(35%);
+}
+.hide {
+  display:none;
+}
+
+.newbg{
+  background: linear-gradient( 120deg,  rgba(190,9,27,1) 6.9%, rgba(22,68,150,1) 75% );;
+}
+
+.hidemask:after {
+  content:none
+}
+
+@media(max-width:768px) {
+  .navbar .wrapper {
+    height: 120px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px;
+  }
+  .navbar__list {
+    display:flex;
+    width: 100%;
+  }
+  .navbar__list li {
+    font-size: 12px;
+    flex: 1;
+    border-radius: 0;
+    text-align:center;
+    height:100%;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar__site-name {
+    margin-top:10px;
+  }
+
+
+  .slogan__streaming {
+    margin: 30px 20px 10px;
+    text-align: center;
+  }
+
+  .navbar .wrapper{
+    height : 145px;
+  }
+
+  .main__container {
+    min-height: 800px;
+  }
+
+  .slogan__landing h2 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 60px;
+    line-height: 80px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    color:white;
+  }
+
+}
