@@ -13,7 +13,9 @@ i: 4
 5
 
 ---
+
 由於此程式碼中的 for 迴圈是以 var 來設定 i 變數，可視為設定一個全域變數 i，故可將程式碼理解為：
+
 ```
 var i
 for(i=0; i<5; i++) {
@@ -23,9 +25,10 @@ for(i=0; i<5; i++) {
   }, i * 1000)
 }
 ```
+
 Step 1. 程式碼讀入
 
-| Stack  | WebAPi |
+| Stack  | 瀏覽器 |
 | ------ | ------ |
 |        |        |
 |        |        |
@@ -38,7 +41,8 @@ Step 1. 程式碼讀入
 | ---- | ---- |
 
 Step 2. 進入 for 迴圈
-| Stack  | WebAPi |
+
+| Stack  | 瀏覽器 |
 | ------ | ------ |
 |        |        |
 | for()  |        |
@@ -49,8 +53,10 @@ Step 2. 進入 for 迴圈
 
 | i:   |      |
 | ---- | ---- |
+
 Step 3. i = 0，第 0 圈。```console.log('i: ' + i)``` 進入 stack
-| Stack                  | WebAPi |
+
+| Stack                  | 瀏覽器 |
 | ---------------------- | ------ |
 | console.log('i: ' + i) |        |
 | for()                  |        |
@@ -61,8 +67,10 @@ Step 3. i = 0，第 0 圈。```console.log('i: ' + i)``` 進入 stack
 
 | i:   | 0    |
 | ---- | ---- |
+
 Step 4. i = 0，第 0 圈。```console.log('i: ' + i)``` 離開 stack，印出 ``i: 0``
-| Stack  | WebAPi |
+
+| Stack  | 瀏覽器 |
 | ------ | ------ |
 |        |        |
 | for()  |        |
@@ -73,11 +81,13 @@ Step 4. i = 0，第 0 圈。```console.log('i: ' + i)``` 離開 stack，印出 `
 
 | i:   | 0    |
 | ---- | ---- |
+
 Step 5. i = 0，第 0 圈。```setTimeout(() => {
     console.log(i)
   }, i * 1000)``` 進入 stack
   (***為方便表示，此處以 cb 取代 () => console.log(i)***)
-| Stack          | WebAPi |
+
+| Stack          | 瀏覽器 |
 | -------------- | ------ |
 | setTimeout(cb) |        |
 | for()          |        |
@@ -88,11 +98,13 @@ Step 5. i = 0，第 0 圈。```setTimeout(() => {
 
 | i:   | 0    |
 | ---- | ---- |
+
 Step 6. i = 0，第 0 圈。```setTimeout(() => {
     console.log(i)
-  }, i * 1000)``` 離開 stack，``console.log(i)`` 交給 webAPI 的 timer 處理，並設 timer 為 i * 1000 毫秒，在第 0 圈中相當於 0 毫秒
+  }, i * 1000)``` 離開 stack，``() => console.log(i)`` 交給瀏覽器的 timer 處理，並設 timer 為 i * 1000 毫秒，在第 0 圈中相當於 0 毫秒
   (***為方便表示，此處以 cb 取代 () => console.log(i)***)
-| Stack  | WebAPi    |
+
+| Stack  | 瀏覽器    |
 | ------ | --------- |
 |        |           |
 | for()  |           |
@@ -103,8 +115,10 @@ Step 6. i = 0，第 0 圈。```setTimeout(() => {
 
 | i:   | 0    |
 | ---- | ---- |
+
 Step 7. i = 1，第 1 圈。```console.log('i: ' + i)``` 進入 stack
-| Stack                  | WebAPi    |
+
+| Stack                  | 瀏覽器    |
 | ---------------------- | --------- |
 | console.log('i: ' + i) |           |
 | for()                  |           |
@@ -115,8 +129,10 @@ Step 7. i = 1，第 1 圈。```console.log('i: ' + i)``` 進入 stack
 
 | i:   | 1    |
 | ---- | ---- |
+
 Step 8. i = 1，第 1 圈。```console.log('i: ' + i)``` 離開 stack，印出 ``i: 1``
-| Stack  | WebAPi    |
+
+| Stack  | 瀏覽器    |
 | ------ | --------- |
 |        |           |
 | for()  |           |
@@ -127,11 +143,13 @@ Step 8. i = 1，第 1 圈。```console.log('i: ' + i)``` 離開 stack，印出 `
 
 | i:   | 1    |
 | ---- | ---- |
+
 Step 9. i = 1，第 1 圈。```setTimeout(() => {
     console.log(i)
   }, i * 1000)``` 進入 stack
   (***為方便表示，此處以 cb 取代 () => console.log(i)***)
-| Stack          | WebAPi    |
+
+| Stack          | 瀏覽器    |
 | -------------- | --------- |
 | setTimeout(cb) |           |
 | for()          |           |
@@ -142,11 +160,13 @@ Step 9. i = 1，第 1 圈。```setTimeout(() => {
 
 | i:   | 1    |
 | ---- | ---- |
+
 Step 10. i = 1，第 1 圈。```setTimeout(() => {
     console.log(i)
-  }, i * 1000)``` 離開 stack，``console.log(i)`` 交給 webAPI 的 timer 處理，並設 timer 為 i * 1000 毫秒，在第 1 圈中相當於 1000 毫秒
+  }, i * 1000)``` 離開 stack，`` () => console.log(i)`` 交給瀏覽器的 timer 處理，並設 timer 為 i * 1000 毫秒，在第 1 圈中相當於 1000 毫秒
   (***為方便表示，此處以 cb 取代 () => console.log(i)***)
-| Stack  | WebAPi    |
+
+| Stack  | 瀏覽器    |
 | ------ | --------- |
 |        |           |
 | for()  | Timer(cb) |
@@ -157,8 +177,10 @@ Step 10. i = 1，第 1 圈。```setTimeout(() => {
 
 | i:   | 1    |
 | ---- | ---- |
+
 Step 11. i = 2，第 2 圈。```console.log('i: ' + i)``` 進入 stack
-| Stack                  | WebAPi    |
+
+| Stack                  | 瀏覽器    |
 | ---------------------- | --------- |
 | console.log('i: ' + i) |           |
 | for()                  | Timer(cb) |
@@ -169,8 +191,10 @@ Step 11. i = 2，第 2 圈。```console.log('i: ' + i)``` 進入 stack
 
 | i:   | 2    |
 | ---- | ---- |
+
 Step 12. i = 2，第 2 圈。```console.log('i: ' + i)``` 離開 stack，印出 ``i: 2``
-| Stack  | WebAPi    |
+
+| Stack  | 瀏覽器    |
 | ------ | --------- |
 |        |           |
 | for()  | Timer(cb) |
@@ -181,11 +205,13 @@ Step 12. i = 2，第 2 圈。```console.log('i: ' + i)``` 離開 stack，印出 
 
 | i:   | 2    |
 | ---- | ---- |
+
 Step 13. i = 2，第 2 圈。```setTimeout(() => {
     console.log(i)
   }, i * 1000)``` 進入 stack
   (***為方便表示，此處以 cb 取代 () => console.log(i)***)
-| Stack          | WebAPi    |
+
+| Stack          | 瀏覽器    |
 | -------------- | --------- |
 | setTimeout(cb) |           |
 | for()          | Timer(cb) |
@@ -196,11 +222,13 @@ Step 13. i = 2，第 2 圈。```setTimeout(() => {
 
 | i:   | 2    |
 | ---- | ---- |
+
 Step 14. i = 2，第 2 圈。```setTimeout(() => {
     console.log(i)
-  }, i * 1000)``` 離開 stack，``console.log(i)`` 交給 webAPI 的 timer 處理，並設 timer 為 i * 1000 毫秒，在第 1 圈中相當於 2000 毫秒
+  }, i * 1000)``` 離開 stack，``() => console.log(i)`` 交給瀏覽器的 timer 處理，並設 timer 為 i * 1000 毫秒，在第 1 圈中相當於 2000 毫秒
   (***為方便表示，此處以 cb 取代 () => console.log(i)***)
-| Stack  | WebAPi    |
+
+| Stack  | 瀏覽器    |
 | ------ | --------- |
 |        | Timer(cb) |
 | for()  | Timer(cb) |
@@ -211,8 +239,10 @@ Step 14. i = 2，第 2 圈。```setTimeout(() => {
 
 | i:   | 2    |
 | ---- | ---- |
+
 Step 15. i = 3，第 3 圈。```console.log('i: ' + i)``` 進入 stack
-| Stack                  | WebAPi    |
+
+| Stack                  | 瀏覽器    |
 | ---------------------- | --------- |
 | console.log('i: ' + i) | Timer(cb) |
 | for()                  | Timer(cb) |
@@ -223,8 +253,10 @@ Step 15. i = 3，第 3 圈。```console.log('i: ' + i)``` 進入 stack
 
 | i:   | 3    |
 | ---- | ---- |
+
 Step 16. i = 3，第 3 圈。```console.log('i: ' + i)``` 離開 stack，印出 ``i: 3``
-| Stack  | WebAPi    |
+
+| Stack  | 瀏覽器    |
 | ------ | --------- |
 |        | Timer(cb) |
 | for()  | Timer(cb) |
@@ -235,11 +267,13 @@ Step 16. i = 3，第 3 圈。```console.log('i: ' + i)``` 離開 stack，印出 
 
 | i:   | 3    |
 | ---- | ---- |
+
 Step 17. i = 3，第 3 圈。```setTimeout(() => {
     console.log(i)
   }, i * 1000)``` 進入 stack
   (***為方便表示，此處以 cb 取代 () => console.log(i)***)
-| Stack          | WebAPi    |
+
+| Stack          | 瀏覽器    |
 | -------------- | --------- |
 | setTimeout(cb) | Timer(cb) |
 | for()          | Timer(cb) |
@@ -250,11 +284,13 @@ Step 17. i = 3，第 3 圈。```setTimeout(() => {
 
 | i:   | 3    |
 | ---- | ---- |
+
 Step 18. i = 3，第 3 圈。```setTimeout(() => {
     console.log(i)
-  }, i * 1000)``` 離開 stack，``console.log(i)`` 交給 webAPI 的 timer 處理，並設 timer 為 i * 1000 毫秒，在第 1 圈中相當於 3000 毫秒
+  }, i * 1000)``` 離開 stack，``() => console.log(i)`` 交給瀏覽器的 timer 處理，並設 timer 為 i * 1000 毫秒，在第 1 圈中相當於 3000 毫秒
   (***為方便表示，此處以 cb 取代 () => console.log(i)***)
-| Stack  | WebAPi    |
+
+| Stack  | 瀏覽器    |
 | ------ | --------- |
 |        | Timer(cb) |
 |        | Timer(cb) |
@@ -266,8 +302,10 @@ Step 18. i = 3，第 3 圈。```setTimeout(() => {
 
 | i:   | 3    |
 | ---- | ---- |
+
 Step 19. i = 4，第 4 圈。```console.log('i: ' + i)``` 進入 stack
-| Stack                  | WebAPi    |
+
+| Stack                  | 瀏覽器    |
 | ---------------------- | --------- |
 |                        | Timer(cb) |
 | console.log('i: ' + i) | Timer(cb) |
@@ -279,8 +317,10 @@ Step 19. i = 4，第 4 圈。```console.log('i: ' + i)``` 進入 stack
 
 | i:   | 4    |
 | ---- | ---- |
+
 Step 20. i = 4，第 4 圈。```console.log('i: ' + i)``` 離開 stack，印出 ``i: 4``
-| Stack  | WebAPi    |
+
+| Stack  | 瀏覽器    |
 | ------ | --------- |
 |        | Timer(cb) |
 |        | Timer(cb) |
@@ -292,11 +332,13 @@ Step 20. i = 4，第 4 圈。```console.log('i: ' + i)``` 離開 stack，印出 
 
 | i:   | 4    |
 | ---- | ---- |
+
 Step 21. i = 4，第 4 圈。```setTimeout(() => {
     console.log(i)
   }, i * 1000)``` 進入 stack
   (***為方便表示，此處以 cb 取代 () => console.log(i)***)
-| Stack          | WebAPi    |
+
+| Stack          | 瀏覽器    |
 | -------------- | --------- |
 |                | Timer(cb) |
 | setTimeout(cb) | Timer(cb) |
@@ -308,11 +350,13 @@ Step 21. i = 4，第 4 圈。```setTimeout(() => {
 
 | i:   | 4    |
 | ---- | ---- |
+
 Step 22. i = 4，第 4 圈。```setTimeout(() => {
     console.log(i)
-  }, i * 1000)``` 離開 stack，``console.log(i)`` 交給 webAPI 的 timer 處理，並設 timer 為 i * 1000 毫秒，在第 1 圈中相當於 4000 毫秒
+  }, i * 1000)``` 離開 stack，``() => console.log(i)`` 交給瀏覽器的 timer 處理，並設 timer 為 i * 1000 毫秒，在第 1 圈中相當於 4000 毫秒
   (***為方便表示，此處以 cb 取代 () => console.log(i)***)
-| Stack  | WebAPi    |
+
+| Stack  | 瀏覽器    |
 | ------ | --------- |
 |        | Timer(cb) |
 |        | Timer(cb) |
@@ -325,8 +369,10 @@ Step 22. i = 4，第 4 圈。```setTimeout(() => {
 
 | i:   | 4    |
 | ---- | ---- |
+
 Step 23. i = 5，因已不符合 i<5 ，離開 for 迴圈
-| Stack  | WebAPi    |
+
+| Stack  | 瀏覽器    |
 | ------ | --------- |
 |        | Timer(cb) |
 |        | Timer(cb) |
@@ -339,8 +385,10 @@ Step 23. i = 5，因已不符合 i<5 ，離開 for 迴圈
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 24. 主要程式碼執行完畢
-| Stack | WebAPi    |
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       | Timer(cb) |
@@ -353,8 +401,10 @@ Step 24. 主要程式碼執行完畢
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 25. 0 毫秒的 timer 到期，cb 放入 task queue
-| Stack | WebAPi    |
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       | Timer(cb) |
@@ -367,8 +417,10 @@ Step 25. 0 毫秒的 timer 到期，cb 放入 task queue
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 26. 由於 stack 為空，queue 中 cb 進入 stack
-| Stack | WebAPi    |
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       | Timer(cb) |
@@ -381,8 +433,10 @@ Step 26. 由於 stack 為空，queue 中 cb 進入 stack
 
 | i:   | 5    |
 | ---- | ---- |
-Step 27. 執行 cb: ``console.log(i)``，cb 離開。此時 i 值為 5，故***印出 5***
-| Stack | WebAPi    |
+
+Step 27. 執行 cb: ``() => console.log(i)``，cb 離開。此時 i 值為 5，故***印出 5***
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       | Timer(cb) |
@@ -395,8 +449,10 @@ Step 27. 執行 cb: ``console.log(i)``，cb 離開。此時 i 值為 5，故***�
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 28. 1000 毫秒的 timer 到期，cb 放入 task queue
-| Stack | WebAPi    |
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       | Timer(cb) |
@@ -409,8 +465,10 @@ Step 28. 1000 毫秒的 timer 到期，cb 放入 task queue
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 29. 由於 stack 為空，queue 中 cb 進入 stack
-| Stack | WebAPi    |
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       | Timer(cb) |
@@ -423,8 +481,10 @@ Step 29. 由於 stack 為空，queue 中 cb 進入 stack
 
 | i:   | 5    |
 | ---- | ---- |
-Step 30. 執行 cb: ``console.log(i)``，cb 離開。此時 i 值為 5，故***印出 5***
-| Stack | WebAPi    |
+
+Step 30. 執行 cb: ``() => console.log(i)``，cb 離開。此時 i 值為 5，故***印出 5***
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       | Timer(cb) |
@@ -437,8 +497,10 @@ Step 30. 執行 cb: ``console.log(i)``，cb 離開。此時 i 值為 5，故***�
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 31. 2000 毫秒的 timer 到期，cb 放入 task queue
-| Stack | WebAPi    |
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       | Timer(cb) |
@@ -451,8 +513,10 @@ Step 31. 2000 毫秒的 timer 到期，cb 放入 task queue
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 32. 由於 stack 為空，queue 中 cb 進入 stack
-| Stack | WebAPi    |
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       | Timer(cb) |
@@ -465,8 +529,10 @@ Step 32. 由於 stack 為空，queue 中 cb 進入 stack
 
 | i:   | 5    |
 | ---- | ---- |
-Step 33. 執行 cb: ``console.log(i)``，cb 離開。此時 i 值為 5，故***印出 5***
-| Stack | WebAPi    |
+
+Step 33. 執行 cb: ``() => console.log(i)``，cb 離開。此時 i 值為 5，故***印出 5***
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       | Timer(cb) |
@@ -479,8 +545,10 @@ Step 33. 執行 cb: ``console.log(i)``，cb 離開。此時 i 值為 5，故***�
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 34. 3000 毫秒的 timer 到期，cb 放入 task queue
-| Stack | WebAPi    |
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       |           |
@@ -493,8 +561,10 @@ Step 34. 3000 毫秒的 timer 到期，cb 放入 task queue
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 35. 由於 stack 為空，queue 中 cb 進入 stack
-| Stack | WebAPi    |
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       |           |
@@ -507,8 +577,10 @@ Step 35. 由於 stack 為空，queue 中 cb 進入 stack
 
 | i:   | 5    |
 | ---- | ---- |
-Step 36. 執行 cb: ``console.log(i)``，cb 離開。此時 i 值為 5，故***印出 5***
-| Stack | WebAPi    |
+
+Step 36. 執行 cb: ``() => console.log(i)``，cb 離開。此時 i 值為 5，故***印出 5***
+
+| Stack | 瀏覽器    |
 | ----- | --------- |
 |       | Timer(cb) |
 |       |           |
@@ -521,8 +593,10 @@ Step 36. 執行 cb: ``console.log(i)``，cb 離開。此時 i 值為 5，故***�
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 37. 4000 毫秒的 timer 到期，cb 放入 task queue
-| Stack | WebAPi |
+
+| Stack | 瀏覽器 |
 | ----- | ------ |
 |       |        |
 |       |        |
@@ -535,8 +609,10 @@ Step 37. 4000 毫秒的 timer 到期，cb 放入 task queue
 
 | i:   | 5    |
 | ---- | ---- |
+
 Step 38. 由於 stack 為空，queue 中 cb 進入 stack
-| Stack | WebAPi |
+
+| Stack | 瀏覽器 |
 | ----- | ------ |
 |       |        |
 |       |        |
@@ -549,8 +625,10 @@ Step 38. 由於 stack 為空，queue 中 cb 進入 stack
 
 | i:   | 5    |
 | ---- | ---- |
-Step 39. 執行 cb: ``console.log(i)``，cb 離開。此時 i 值為 5，故***印出 5***
-| Stack | WebAPi |
+
+Step 39. 執行 cb: ``() => console.log(i)``，cb 離開。此時 i 值為 5，故***印出 5***
+
+| Stack | 瀏覽器 |
 | ----- | ------ |
 |       |        |
 |       |        |

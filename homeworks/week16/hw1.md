@@ -7,7 +7,8 @@
 
 
 Step 1. 程式碼讀入
-| Stack  | WebAPi |
+
+| Stack  | 瀏覽器 |
 | ------ | ------ |
 |        |        |
 |        |        |
@@ -17,7 +18,8 @@ Step 1. 程式碼讀入
 | ----------- | ---- | ---- |
 
 Step 2. console.log(1) 進入 stack
-| Stack          | WebAPi |
+
+| Stack          | 瀏覽器 |
 | -------------- | ------ |
 |                |        |
 | console.log(1) |        |
@@ -27,7 +29,8 @@ Step 2. console.log(1) 進入 stack
 | ----------- | ---- | ---- |
 
 Step 3. console.log(1) 執行後離開 stack （**印出 1**）
-| Stack  | WebAPi |
+
+| Stack  | 瀏覽器 |
 | ------ | ------ |
 |        |        |
 |        |        |
@@ -38,7 +41,8 @@ Step 3. console.log(1) 執行後離開 stack （**印出 1**）
 
 Step 4. setTimeout(() => console.log(2), 0 ) 進入 stack
 (***為方便表示，此處以 cb2 取代 () => console.log(4)***)
-| Stack          | WebAPi |
+
+| Stack          | 瀏覽器 |
 | -------------- | ------ |
 |                |        |
 | setTimeout(cb) |        |
@@ -47,8 +51,9 @@ Step 4. setTimeout(() => console.log(2), 0 ) 進入 stack
 | Task queue: |      |      |
 | ----------- | ---- | ---- |
 
-Step 5. () => console.log(2) 交給 webAPI 的 timer 處理
-| Stack | WebAPi |
+Step 5. () => console.log(2) 交給 瀏覽器 的 timer 處理
+
+| Stack | 瀏覽器 |
 | ----- | ------ |
 |       |        |
 |       |        |
@@ -58,7 +63,8 @@ Step 5. () => console.log(2) 交給 webAPI 的 timer 處理
 | ----------- | ---- | ---- |
 
 Step 6. 0毫秒後，timer 結束，() => console.log(2) 進入 task queue，等待 Stack 清空即進入 Stack
-| Stack  | WebAPi |
+
+| Stack  | 瀏覽器 |
 | ------ | ------ |
 |        |        |
 |        |        |
@@ -68,7 +74,8 @@ Step 6. 0毫秒後，timer 結束，() => console.log(2) 進入 task queue，等
 | ----------- | ---- | ---- |
 
 Step 7. console.log(3) 進入 stack
-| Stack          | WebAPi |
+
+| Stack          | 瀏覽器 |
 | -------------- | ------ |
 |                |        |
 | console.log(3) |        |
@@ -78,7 +85,8 @@ Step 7. console.log(3) 進入 stack
 | ----------- | ---- | ---- |
 
 Step 8. console.log(3) 執行後離開 stack （**印出 3**）
-| Stack  | WebAPi |
+
+| Stack  | 瀏覽器 |
 | ------ | ------ |
 |        |        |
 |        |        |
@@ -89,6 +97,7 @@ Step 8. console.log(3) 執行後離開 stack （**印出 3**）
 
 Step 9. setTimeout( () => console.log(4), 0 ) 進入 stack
 (***為方便表示，此處以 cb 取代 () => console.log(2)***)
+
 | Stack           | WebAPi |
 | --------------- | ------ |
 |                 |        |
@@ -98,8 +107,9 @@ Step 9. setTimeout( () => console.log(4), 0 ) 進入 stack
 | Task queue: | cb   |      |
 | ----------- | ---- | ---- |
 
-Step 10. () => console.log(4) 交給 webAPI 的 timer 處理
-| Stack  | WebAPi     |
+Step 10. () => console.log(4) 交給 瀏覽器 的 timer 處理
+
+| Stack  | 瀏覽器     |
 | ------ | ---------- |
 |        |            |
 |        |            |
@@ -109,6 +119,7 @@ Step 10. () => console.log(4) 交給 webAPI 的 timer 處理
 | ----------- | ---- | ---- |
 
 Step 11. 0毫秒後，timer 結束，() => console.log(4) 進入 task queue，等待 Stack 清空即進入 Stack
+
 | Stack  | WebAPi |
 | ------ | ------ |
 |        |        |
@@ -119,7 +130,8 @@ Step 11. 0毫秒後，timer 結束，() => console.log(4) 進入 task queue，�
 | ----------- | ---- | ---- |
 
 Step 12. console.log(5) 進入 stack
-| Stack          | WebAPi |
+
+| Stack          | 瀏覽器 |
 | -------------- | ------ |
 |                |        |
 | console.log(5) |        |
@@ -127,8 +139,10 @@ Step 12. console.log(5) 進入 stack
 
 | Task queue: | cb   | cb2  |
 | ----------- | ---- | ---- |
+
 Step 13. console.log(5) 執行後離開 stack （**印出 5**）
-| Stack  | WebAPi |
+
+| Stack  | 瀏覽器 |
 | ------ | ------ |
 |        |        |
 |        |        |
@@ -138,7 +152,8 @@ Step 13. console.log(5) 執行後離開 stack （**印出 5**）
 | ----------- | ---- | ---- |
 
 Step 14. 程式碼都跑完了，main() 執行完畢
-| Stack | WebAPi |
+
+| Stack | 瀏覽器 |
 | ----- | ------ |
 |       |        |
 |       |        |
@@ -149,7 +164,8 @@ Step 14. 程式碼都跑完了，main() 執行完畢
 
 
 Step 15. stack 空掉，queue 的第一位可進入 stack
-| Stack | WebAPi |
+
+| Stack | 瀏覽器 |
 | ----- | ------ |
 |       |        |
 |       |        |
@@ -158,8 +174,9 @@ Step 15. stack 空掉，queue 的第一位可進入 stack
 | Task queue: | cb2  |      |
 | ----------- | ---- | ---- |
 
-Step 16. cb 執行後離開 queue （**印出2**）
-| Stack | WebAPi |
+Step 16. cb 執行後離開 stack （**印出2**）
+
+| Stack | 瀏覽器 |
 | ----- | ------ |
 |       |        |
 |       |        |
@@ -169,7 +186,8 @@ Step 16. cb 執行後離開 queue （**印出2**）
 | ----------- | ---- | ---- |
 
 Step 17. stack 空掉，queue 的第一位可進入 stack
-| Stack | WebAPi |
+
+| Stack | 瀏覽器 |
 | ----- | ------ |
 |       |        |
 |       |        |
@@ -178,8 +196,9 @@ Step 17. stack 空掉，queue 的第一位可進入 stack
 | Task queue: |      |      |
 | ----------- | ---- | ---- |
 
-Step 16. cb2 執行後離開 queue （**印出4**）
-| Stack | WebAPi |
+Step 18. cb2 執行後離開 stack （**印出4**）
+
+| Stack | 瀏覽器 |
 | ----- | ------ |
 |       |        |
 |       |        |
