@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>抽獎小工具</title>
+  </head>
+  <body>
+    <a href="/backstage" class="mt-4 add-btn btn btn-secondary btn-lg">回後台</a>
+    <div class="hide mx-auto add" style="max-width:600px">
+      <form enctype="multipart/form-data" class="" action="/editPrize/<%=prize.id%>" method="post">
+        <div class="form-group">
+          <label for="exampleInputEmail1">獎項名稱：</label>
+          <input type="text" name="prize" class="form-control" value="<%= prize.prize %>">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">獎品描述：</label>
+          <input type="text" name="description" class="form-control" value="<%= prize.description %>">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">中獎率（％）：</label>
+          <input type="number" name="possibility" min="0.1" step="0.1" max="100" class="form-control" value="<%= prize.possibility %>" >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">獎品圖片：<%= (prize.image) ? '': ' 無'%></label>
+          <% if(prize.image) { %> <img src="<%= prize.image %>" alt="" width="250px"> <% } %>
+          <input type="file" name="pic" class="form-control" accept="image/gif image/jpeg image/x-png" >
+        </div>
+        <input type="submit" class="btn btn-primary">
+        <button class="cancel btn btn-secondary">取消</button>
+      </form>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

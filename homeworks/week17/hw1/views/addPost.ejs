@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+  <body>
+    <%- include('partials/nav') %>
+    <div class="container__main">
+      <div class="titles">
+        <h1>存放技術之地</h1>
+        <p>Welcome to my blog</p>
+      </div>
+      <div class="container__posts">
+        <div class="post post-spread post-add">
+          <form class="add__article-form" action="/addPost" method="post">
+            <div class="post__title">
+              <h1>發表文章：</h1>
+              <input class="input-title" type="text" name="title" placeholder="請輸入文章標題..." value=""></input>
+            </div>
+            <div class="post__infos">
+              <select class="" name="category">
+                <% for (c of categories) {%>
+                  <option value="<%= c.id %>"><%= c.name %></option>
+                <% } %>
+              </select>
+            </div>
+            <div class="post__content-spread">
+              <textarea name="content" id="editor"></textarea>
+            </div>
+            <input class="submit-btn" type="submit" name="" value="送出文章"></input>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      Copyright © 2020 Who's Blog All Rights Reserved.
+    </footer>
+  </body>
+  <script>
+    ClassicEditor
+      .create( document.querySelector( '#editor' ) )
+      .catch( error => {
+    console.error( error );
+    } );
+  </script>
+</html>

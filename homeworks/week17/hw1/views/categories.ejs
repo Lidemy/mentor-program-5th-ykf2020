@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/nav') %>
+    <div class="container__main">
+      <div class="titles">
+        <h1 class="ddd">存放技術之地</h1>
+        <p>Welcome to my blog</p>
+      </div>
+        <div class="container__posts">
+          <%if(isLogin){%>
+          <div class="post post-backstage">
+            <form class="" action="/addCategory" method="post">
+              <div class="post__title">
+                <div class="post__title-word">
+                  <input type="text" name="categoryname" class="add-category-input" placeholder="新增分類..." value=""></input>
+                </div>
+                <div class="post__title-buttons">
+                  <input type="submit" class="add-category-btn" name="" value="送出">
+                </div>
+              </div>
+            </form>
+          </div>
+          <% } %>
+        <% for(c of categories) {%>
+          <div class="post post-backstage">
+            <form class="" action="/editCategory" method="post">
+              <div class="post__title">
+                <div class="post__title-word">
+                  <input type="hidden" name="id" value="<%= c.id %>">
+                  <input type="text" name="categoryname" class="hide add-category-input" placeholder="<%=c.name%>..." value=""></input>
+                  <h1 class="category-title"><%=c.name%> ( <%=c.Posts.length%> )</h1>
+                  <div class="hide cat-articles">
+                    <% for(let i=0 ;i<c.Posts.length;i++) {%>
+                    <div class="cat-article-title"><a href="/post/<%=c.Posts[i].id%>">・<%=c.Posts[i].title%></a></div>
+                    <% } %>
+                  </div>
+                </div>
+                <%if(isLogin){%>
+                <div class="post__title-buttons">
+                  <p class="category-created_at"><%=c.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })%></p>
+                  <a class="bs_edit-btn edit-category-btn">編輯</a>
+                  <input class="hide bs_edit-btn edit-category-submit-btn" type="submit" name="" value="送出">
+                  <a href="/deleteCategory"class=" <%if(c.id==1){%> cover <%}%>  bs_delete-btn" data-id="<%= c.id %>">刪除</a>
+                  <a class="hide bs_edit-btn edit-cancel-btn">取消</a>
+                </div>
+                <% } %>
+              </div>
+            </form>
+          </div>
+        <% } %>
+      </div>
+    </div>
+    <footer>
+      Copyright © 2020 Who's Blog All Rights Reserved.
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $('.container__posts').on('click','.edit-category-btn',function(e){
+      var editBtn = e.target
+      $(editBtn).toggleClass('hide')
+      var submitBtn = $(e.target).parent().find('.edit-category-submit-btn')
+      $(submitBtn).toggleClass('hide')
+      var deleteBtn = $(e.target).parent().find('.bs_delete-btn')
+      $(deleteBtn).toggleClass('hide')
+      var cancelBtn = $(e.target).parent().find('.edit-cancel-btn')
+      $(cancelBtn).toggleClass('hide')
+      var createdAt = $(e.target).parent().find('.category-created_at')
+      $(createdAt).toggleClass('cover')
+      var input = $(e.target).parent().parent().find('.add-category-input')
+      $(input).toggleClass('hide')
+      var title = $(e.target).parent().parent().find('.category-title')
+      $(title).toggleClass('hide')
+    })
+    $('.container__posts').on('click','.edit-cancel-btn',function(e){
+      var cancelBtn = e.target
+      $(cancelBtn).toggleClass('hide')
+      var submitBtn = $(e.target).parent().find('.edit-category-submit-btn')
+      $(submitBtn).toggleClass('hide')
+      var deleteBtn = $(e.target).parent().find('.bs_delete-btn')
+      $(deleteBtn).toggleClass('hide')
+      var editBtn = $(e.target).parent().find('.edit-category-btn')
+      $(editBtn).toggleClass('hide')
+      var createdAt = $(e.target).parent().find('.category-created_at')
+      $(createdAt).toggleClass('cover')
+      var input = $(e.target).parent().parent().find('.add-category-input')
+      $(input).toggleClass('hide')
+      var title = $(e.target).parent().parent().find('.category-title')
+      $(title).toggleClass('hide')
+    })
+    $('.container__posts').on('click','.category-title',function(e){
+      var catArticles = $(e.target).parent().find('.cat-articles')
+      $(catArticles).toggleClass('hide')
+    })
+    $('.bs_delete-btn').click(function(e){
+      e.preventDefault()
+      if(confirm('刪除分類會一併刪除分類中所有文章，確定執行？')){
+        window.location.href=`/deleteCategory/${e.target.getAttribute('data-id')}`
+      } else {
+        return
+      }
+    })
+    </script>
+  </body>
+</html>

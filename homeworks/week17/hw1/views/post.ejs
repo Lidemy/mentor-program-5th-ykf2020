@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/nav') %>
+    <div class="container__main">
+      <div class="titles">
+        <h1>存放技術之地</h1>
+        <p>Welcome to my blog</p>
+      </div>
+      <div class="container__posts">
+        <div class="post post-spread">
+          <div class="post__title-spread">
+            <h1> <%=post.title %></h1>
+          </div>
+          <div class="post__infos">
+            <p><span><i class="fa fa-clock-o" aria-hidden="true"></i> <%= post.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }) %></span>&nbsp;&nbsp;<span><i class="fa fa-folder-o" aria-hidden="true"></i> <%= post.Category.name %></span></p>
+          </div>
+          <div class="post__content-spread">
+            <p><%- post.content %></p>
+          </div>
+          <% if(isLogin){ %>
+          <a href="/editPost/<%=post.id %>" class="edit-btn">編輯</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <footer>
+      Copyright © 2020 Who's Blog All Rights Reserved.
+    </footer>
+  </body>
+</html>

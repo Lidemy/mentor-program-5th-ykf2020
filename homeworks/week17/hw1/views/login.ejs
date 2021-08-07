@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="nav__left">
+        <a href="/"><h1>Who's Blog</h1></a><a href="/posts">文章列表</a><a href="/categories">分類專區</a><a href="/about">關於我</a>
+      </div>
+      <div class="nav__right">
+      </div>
+    </div>
+    <% if(errorMessage.length>0){ %>
+      <div class="alert alert-danger" role="alert">
+        <%= errorMessage %>
+      </div>
+    <% } %>
+    <div class="login">
+      <h1>Login</h1>
+      <form class="" action="/login" method="post">
+        <div class="login__info">
+          <p>USERNAME</p>
+          <input class="username-input"type="text" name="username" value="">
+          <p>PASSWORD</p>
+          <input class="password-input"type="password" name="password" value="">
+          <input class="login-btn" type="submit" name="" value="SIGN IN">
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
