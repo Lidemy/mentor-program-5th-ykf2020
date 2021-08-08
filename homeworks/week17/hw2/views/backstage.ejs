@@ -1,0 +1,120 @@
+<% let altpic = 'https://ichef.bbci.co.uk/news/640/cpsprodpb/3A91/production/_107939941_child-with--present.jpg'%>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>抽獎小工具</title>
+  </head>
+  <style media="screen">
+    .hide {
+      display:none
+    }
+    .table {
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      min-width: 600px;
+    }
+    .table thead tr{
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+      font-weight: bold;
+    }
+    .table th, .table td {
+      padding: 12px 15px
+    }
+    .table tbody tr{
+      border-bottom: 1px solid #dddddd
+    }
+    .table tbody tr:last-of-type {
+      border-bottom: 3px solid #009879
+    }
+  </style>
+  <body>
+    <% if(errorMessage.length > 0){ %>
+      <div class="alert alert-danger" role="alert">
+        <%= errorMessage %>
+      </div>
+    <% } %>
+    <button type="button" class="mt-4 add-btn btn btn-primary btn-lg">新增獎品</button>
+    <a href="/" class="mt-4 add-btn btn btn-info btn-lg">回抽獎頁</a>
+    <a href="/logout" class="mt-4 add-btn btn btn-secondary btn-lg">登出</a>
+    <div class="hide mx-auto add" style="max-width:600px">
+      <form enctype="multipart/form-data" class="" action="/upload" method="post">
+        <div class="form-group">
+          <label for="exampleInputEmail1">獎項名稱：</label>
+          <input type="text" name="prize" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">獎品描述：</label>
+          <input type="text" name="description" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">中獎率（％）：</label>
+          <input type="number" name="possibility" min="0.1" step="0.1" max="100" class="form-control" >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">獎品圖片：</label>
+          <input type="file" name="pic" class="form-control" accept="image/gif image/jpeg image/x-png" >
+        </div>
+        <input type="submit" class="btn btn-primary">
+        <button class="cancel btn btn-secondary">取消</button>
+      </form>
+    </div>
+    <% let totalP = 0 ; for(let i = 0; i < prizes.length; i++){ totalP += parseFloat(prizes[i].possibility)} %>
+    <h3 class="my-3">目前總中獎率：<%= totalP %> %</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>獎項</th>
+          <th>獎品名稱</th>
+          <th>獎品敘述</th>
+          <th>中獎率</th>
+          <th>獎品圖片</th>
+          <th>設定</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 0; i < prizes.length; i++) { %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= prizes[i].prize %></td>
+          <td><%= prizes[i].description %></td>
+          <td><%= prizes[i].possibility%> %</td>
+          <td><img src="<%= (prizes[i].image) ? prizes[i].image : altpic %>" alt="" width="250px"></td>
+          <td>
+            <a href="/editPrize/<%= prizes[i].id %>" class="btn btn-outline-secondary" >編輯</a>
+            <a href="/deletePrize/<%= prizes[i].id %>"  class="btn btn-outline-danger">刪除</a>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      const addbtn = document.querySelector('.add-btn')
+      const add = document.querySelector('.add')
+      const cancel = document.querySelector('.cancel')
+      addbtn.addEventListener('click',() => {
+        add.classList.remove('hide')
+        addbtn.classList.add('hide')
+      })
+      cancel.addEventListener('click',() => {
+        add.classList.add('hide')
+        addbtn.classList.remove('hide')
+      })
+    </script>
+  </body>
+</html>

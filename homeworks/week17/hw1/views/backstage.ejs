@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/nav') %>
+    <div class="container__main">
+      <div class="titles">
+        <h1>存放技術之地</h1>
+        <p>Welcome to my blog</p>
+      </div>
+        <div class="container__posts">
+          <%for(post of posts){%>
+          <div class="post post-backstage">
+            <div class="post__title">
+              <div class="post__title-word">
+                <h1><%=post.title%></h1>
+              </div>
+              <div class="post__title-buttons">
+                <p><%=post.createdAt.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })%></p>
+                <a href="/editPost/<%=post.id%>" class="bs_edit-btn">編輯</a>
+                <a href="/deletePost" class="bs_delete-btn" data-id="<%=post.id%>">刪除</a>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+    <footer>
+      Copyright © 2020 Who's Blog All Rights Reserved.
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $('.bs_delete-btn').click(function(e){
+      e.preventDefault()
+      if(confirm('確定要刪除此篇文章？')){
+        window.location.href=`/deletePost/${e.target.getAttribute('data-id')}`
+      } else {
+        return
+      }
+    })
+    </script>
+  </body>
+</html>
