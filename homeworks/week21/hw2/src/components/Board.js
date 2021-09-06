@@ -107,8 +107,8 @@ export default function Board({
 
     // 處理完塞回去 history
     setHistory(tempHistory.concat([{ board: tempBoardChange }]));
-    setStepNumber(stepNumber + 1);
-    setIsBlackNext(!isBlackNext);
+    setStepNumber(() => stepNumber + 1);
+    setIsBlackNext(isBlackNext => !isBlackNext);
   };
 
   return (
